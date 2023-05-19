@@ -3,6 +3,9 @@ import { fetchData } from "./utils/api";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getApiConfiguration } from "./store/homeSlice";
+import { faMoon } from "@fortawesome/free-regular-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { darkBtn } from "./store/darkBtnSlice";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,13 +18,30 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   console.log(
-  //     fetchData("/movie/popular").then((res) =>
-  //       dispatch(getApiConfiguration(res))
-  //     )
-  //   );
-  // }, []);
+  const darkLightMode = () => {
+    if (
+      localStorage.theme == "dark" ||
+      (!(localStorage.theme === "light") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add("dark");
+      dispatch(darkBtn({ icon: faSun, text: "Light Mode" }));
+    } else {
+      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
+      dispatch(darkBtn({ icon: faMoon, text: "Dark Mode" }));
+    }
+  };
+
+  useEffect(() => {
+    // console.log(
+    //   fetchData("/movie/popular").then((res) =>
+    //     dispatch(getApiConfiguration(res))
+    //   )
+    // );
+    darkLightMode();
+  }, []);
 
   return (
     <BrowserRouter class>

@@ -4,3 +4,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.activeLink span {
+  color: #d81f26 !important;
+}
