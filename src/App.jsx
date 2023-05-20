@@ -15,6 +15,7 @@ import Details from "./pages/details/Details";
 import About from "./pages/about/About";
 import PagenNotFound from "./pages/404/PageNotFound";
 import Sidebar from "./components/Sidebar";
+import useFetch from "./hooks/useFetch";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,19 +35,24 @@ function App() {
     }
   };
 
+  const fetchApiConfig = () => {
+    fetchData("/configuration").then((res) => {
+      const url = {
+        backdrop: res.images.secure_base_url + "original",
+      };
+      dispatch(getApiConfiguration(url));
+    });
+  };
+
   useEffect(() => {
-    // console.log(
-    //   fetchData("/movie/popular").then((res) =>
-    //     dispatch(getApiConfiguration(res))
-    //   )
-    // );
+    fetchApiConfig();
     darkLightMode();
   }, []);
 
   return (
     <BrowserRouter class>
       <Sidebar />
-      <section className="w-full">
+      <section className="w-full  mx-10">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
