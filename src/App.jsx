@@ -52,7 +52,7 @@ function App() {
   return (
     <BrowserRouter class>
       <Sidebar />
-      <section className="w-full  mx-10">
+      <section className="w-full max-h-[100svh]  mx-10 overflow-y-scroll">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

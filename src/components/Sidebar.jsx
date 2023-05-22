@@ -22,7 +22,7 @@ const Sidebar = (props) => {
   };
 
   return (
-    <section className="hidden px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 lg:flex flex-col">
+    <section className="hidden px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 lg:flex flex-col h-[100svh]">
       <header className="font-Ramabhadra text-neutral-700 dark:text-neutral-100 text-2xl">
         FlickFinder<span className="text-primary">.</span>
       </header>

@@ -12,7 +12,7 @@ const Header = () => {
       <div className="font-Ramabhadra text-neutral-700 dark:text-neutral-100 lg:hidden">
         FlickFinder<span className="text-primary">.</span>
       </div>
-      <div className="flex items-center border-2 text-neutral-500 border-neutral-500 dark:text-neutral-600 dark:border-neutral-600 sm:flex-1 sm:px-[0.8rem] rounded-full py-2 px-[0.65rem] text-[1.4rem]">
+      <div className="flex items-center border-2 text-neutral-500 max-w-[30%] border-neutral-500 dark:text-neutral-600 dark:border-neutral-600 sm:flex-1 sm:px-[0.8rem] rounded-full py-2 px-[0.65rem] text-[1.4rem]">
         <FontAwesomeIcon icon={faMagnifyingGlass} className="" />
         <input
           type="text"

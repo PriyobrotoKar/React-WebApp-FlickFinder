@@ -8,3 +8,6 @@
 .activeLink span {
   color: #d81f26 !important;
 }
+::-webkit-scrollbar {
+  width: 0;
+}
