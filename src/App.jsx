@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { fetchData } from "./utils/api";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getApiConfiguration } from "./store/homeSlice";
+import { getApiConfiguration, getGernres } from "./store/homeSlice";
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { darkBtn } from "./store/darkBtnSlice";
@@ -44,7 +44,27 @@ function App() {
     });
   };
 
+  const getAllGenres = async () => {
+    let promises = [];
+    let endPoints = ["tv", "movie"];
+    let allGenres = {};
+
+    endPoints.forEach((point) => {
+      promises.push(fetchData(`/genre/${point}/list`));
+    });
+
+    const data = await Promise.all(promises);
+
+    data.map(({ genres }) => {
+      return genres.map((item) => {
+        allGenres[item.id] = item;
+      });
+    });
+    dispatch(getGernres(allGenres));
+  };
+
   useEffect(() => {
+    getAllGenres();
     fetchApiConfig();
     darkLightMode();
   }, []);
@@ -52,7 +72,7 @@ function App() {
   return (
     <BrowserRouter class>
       <Sidebar />
-      <section className="w-full max-h-[100svh]  mx-10 overflow-y-scroll">
+      <section className="w-full max-h-[100svh]  px-10 py-0 overflow-y-scroll overflow-x-hidden">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

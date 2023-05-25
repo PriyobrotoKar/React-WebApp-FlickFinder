@@ -27,15 +27,9 @@ const Herobanner = () => {
       const movies = await data.results;
       setpopMovies(movies);
       getMovieDetails(movies[0].id);
-      // setBackground(movies[0].backdrop_path);
-      // setMovieDetails({
-      //   title: movies[0].original_title,
-      //   genres: movies[0],
-      //   rating: movies[0].vote_average,
-      // });
     };
 
-    populateArray();
+    data ? populateArray() : "";
   }, [data]);
 
   const responsive = {
@@ -82,11 +76,11 @@ const Herobanner = () => {
               {movieDetails.rating.toFixed(1)}
             </div>
           </div>
-          <div className="absolute bottom-10 left-10 space-y-3 max-w-[60%]">
+          <div className="absolute bottom-10 left-10 max-w-[60%]">
             <h2 className="text-3xl text-neutral-100 font-semibold  leading-[4rem]">
               {movieDetails.title}
             </h2>
-            <div className="text-base flex gap-1 text-neutral-100 opacity-60 tracking-wide">
+            <div className="mt-2 text-lg flex gap-1 text-neutral-100 opacity-60 tracking-wide">
               {movieDetails.genres.map((elem, ind, genres) => {
                 return (
                   <div>
@@ -95,7 +89,7 @@ const Herobanner = () => {
                 );
               })}
             </div>
-            <button className="px-6 py-3 bg-primary text-xl rounded-xl text-neutral-100 shadow-[0_0.8rem_2rem_0rem] shadow-[#ff000071]">
+            <button className="px-6 py-3 mt-4 bg-primary text-xl rounded-xl text-neutral-100 shadow-[0_0.8rem_2rem_0rem] shadow-[#ff000071]">
               Watch
             </button>
           </div>
