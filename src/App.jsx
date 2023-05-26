@@ -72,7 +72,7 @@ function App() {
   return (
     <BrowserRouter class>
       <Sidebar />
-      <section className="w-full max-h-[100svh]  px-10 py-0 overflow-y-scroll overflow-x-hidden">
+      <section className="w-full max-h-[100svh]  px-4 lg:px-10 py-0 overflow-y-scroll overflow-x-hidden">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

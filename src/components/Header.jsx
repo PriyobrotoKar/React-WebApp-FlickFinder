@@ -5,7 +5,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
-    <header className="container mx-auto flex justify-between items-center py-10 text-2xl sm:gap-7">
+    <header className="flex justify-between items-center py-10 text-2xl sm:gap-7">
       <div className="flex items-center text-neutral-500 dark:text-neutral-600 text[1.4rem] lg:hidden">
         <FontAwesomeIcon icon={faBars} />
       </div>
