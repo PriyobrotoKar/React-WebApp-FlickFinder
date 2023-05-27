@@ -7,13 +7,13 @@ const ShowGenres = ({ responses, loading, url, genres }) => {
   useEffect(() => {
     responses.then((res) => {
       setDatas(res);
-      //   console.log(datas);
+      console.log(datas);
     });
   });
 
   return (
     <div>
-      {datas?.map((data) => {
+      {datas?.slice(0, 17).map((data) => {
         return (
           <div className="mb-10">
             <h3 className="text-neutral-600 dark:text-neutral-100 font-medium text-xl mb-6">

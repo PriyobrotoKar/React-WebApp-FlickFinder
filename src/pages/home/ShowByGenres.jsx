@@ -13,7 +13,7 @@ const ShowByGenres = () => {
   const loading = false;
   let promises = [];
   const { url, genres } = useSelector((state) => state.home);
-  console.log(genres);
+  // console.log(genres);
 
   const showGenres = async () => {
     for (const g in genres) {
@@ -28,7 +28,7 @@ const ShowByGenres = () => {
 
       i++;
     }
-    console.log(responses);
+    // console.log(responses);
     return responses;
   };
 

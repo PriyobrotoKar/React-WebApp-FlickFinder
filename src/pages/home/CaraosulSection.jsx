@@ -46,7 +46,7 @@ const CaraosulSection = ({ data, loading, url, genres }) => {
             return (
               <div
                 key={item.id}
-                className="relative mr-6 text-neutral-100 hover:scale-110 transition-all duration-200 cursor-pointer"
+                className="relative h-full mr-6 text-neutral-100 hover:scale-110 transition-all duration-200 cursor-pointer"
               >
                 <div className="absolute z-20 top-2 left-2 bg-[#161616ab] flex justify-center gap-1 items-center px-4 py-2 rounded-3xl text-[0.8rem]">
                   <div className="text-[#ffbd42]">
