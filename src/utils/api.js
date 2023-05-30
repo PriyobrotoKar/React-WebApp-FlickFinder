@@ -11,7 +11,10 @@ export const fetchData = async (url, params) => {
   try {
     const { data } = await axios.get(BASE_URL + url, {
       headers,
-      params,
+      params: {
+        region: "IN",
+        ...params,
+      },
     });
     return data;
   } catch (err) {

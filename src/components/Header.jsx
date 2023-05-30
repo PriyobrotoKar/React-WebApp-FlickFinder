@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 
 const Header = () => {
   let location = useLocation();
-  let isInDetails = location.pathname.includes("/movie");
+  let isInDetails =
+    location.pathname.includes("/movie") || location.pathname.includes("/tv");
   return (
     <header
       className={
