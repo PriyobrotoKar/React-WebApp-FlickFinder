@@ -1,10 +1,10 @@
 import React from "react";
 
-import useFetch from "../../hooks/useFetch";
 import { useSelector } from "react-redux";
+import useFetch from "../../hooks/useFetch";
 
+import CaraosulSection from "../../components/CaraosulSection";
 import "./trending.css";
-import CaraosulSection from "./CaraosulSection";
 
 const Trending = () => {
   const { data, loading } = useFetch("/trending/all/week");

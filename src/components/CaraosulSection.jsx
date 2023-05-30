@@ -1,11 +1,14 @@
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Img from "./Img";
+import { useNavigate } from "react-router-dom";
+import Img from "../pages/home/Img";
 
 const CaraosulSection = ({ data, loading, url, genres }) => {
+  const navigate = useNavigate();
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -76,7 +79,10 @@ const CaraosulSection = ({ data, loading, url, genres }) => {
                       );
                     })}
                   </div>
-                  <button className="bg-primary text-neutral-100 text-lg w-full py-2 rounded-xl mt-2 hover:bg-[#ff4d4d] hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#a00d0d71] transition-all">
+                  <button
+                    onClick={() => navigate(`/movie/${item.id}`)}
+                    className="bg-primary text-neutral-100 text-lg w-full py-2 rounded-xl mt-2 hover:bg-[#ff4d4d] hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#a00d0d71] transition-all"
+                  >
                     More Info
                   </button>
                 </div>

@@ -1,21 +1,20 @@
-import { useEffect } from "react";
-import { fetchData } from "./utils/api";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getApiConfiguration, getGernres } from "./store/homeSlice";
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { darkBtn } from "./store/darkBtnSlice";
+import { getApiConfiguration, getGernres } from "./store/homeSlice";
+import { fetchData } from "./utils/api";
 
-import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./pages/home/Home";
+import Header from "./components/Header";
 import Details from "./pages/details/Details";
+import Home from "./pages/home/Home";
 // import SearchResults from "./pages/searchResults/SearchResults";
-import About from "./pages/about/About";
-import PagenNotFound from "./pages/404/PageNotFound";
 import Sidebar from "./components/Sidebar";
-import useFetch from "./hooks/useFetch";
+import PagenNotFound from "./pages/404/PageNotFound";
+import About from "./pages/about/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -72,7 +71,7 @@ function App() {
   return (
     <BrowserRouter class>
       <Sidebar />
-      <section className="w-full max-h-[100svh]  px-4 lg:px-10 py-0 overflow-y-scroll overflow-x-hidden">
+      <section className="w-full max-h-[100svh] py-0 overflow-y-scroll overflow-x-hidden">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CaraosulSection from "./CaraosulSection";
+import CaraosulSection from "../../components/CaraosulSection";
 
 const ShowGenres = ({ responses, loading, url, genres }) => {
   const [datas, setDatas] = useState();

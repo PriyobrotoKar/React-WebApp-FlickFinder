@@ -6,6 +6,7 @@ export default {
     fontFamily: {
       Ramabhadra: " 'Ramabhadra', sans-serif",
       Poppins: "'Poppins', sans-serif",
+      SofiaSansCondensed: "'Sofia Sans Condensed', sans-serif",
     },
     colors: {
       primary: "#D81F26",
