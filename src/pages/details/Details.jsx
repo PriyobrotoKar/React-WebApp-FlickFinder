@@ -5,6 +5,8 @@ import useFetch from "../../hooks/useFetch";
 import Cast from "./Cast";
 import Description from "./Description";
 import DetailsBanner from "./DetailsBanner";
+import Recommendation from "./Recommendation";
+import Similar from "./Similar";
 import VideosSection from "./VideosSection";
 
 const Details = () => {
@@ -16,7 +18,7 @@ const Details = () => {
   const { data: videos, loading: videosLoading } = useFetch(
     `/${mediaType}/${id}/videos`
   );
-  const { url } = useSelector((state) => state.home);
+  const { url, genres } = useSelector((state) => state.home);
   return (
     <div className="font-Poppins relative -top-32 ">
       <DetailsBanner
@@ -34,6 +36,8 @@ const Details = () => {
       />
       <Cast credits={credits} castLoading={creditsLoading} url={url} />
       <VideosSection videos={videos} videosLoading={videosLoading} />
+      <Similar mediaType={mediaType} id={id} url={url} genres={genres} />
+      <Recommendation mediaType={mediaType} id={id} url={url} genres={genres} />
     </div>
   );
 };

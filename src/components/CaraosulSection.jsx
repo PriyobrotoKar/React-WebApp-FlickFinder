@@ -44,7 +44,7 @@ const CaraosulSection = ({ data, loading, url, genres }) => {
   return (
     <div className="overflow-visible">
       {!loading && (
-        <Carousel responsive={responsive} className="overflow-visible">
+        <Carousel responsive={responsive} className="overflow-visible z-10">
           {data?.results?.map((item) => {
             return (
               <div
@@ -73,7 +73,7 @@ const CaraosulSection = ({ data, loading, url, genres }) => {
                     {item.genre_ids.splice(0, 3).map((genre, ind, items) => {
                       return (
                         <span key={ind}>
-                          {genres[genre].name +
+                          {genres[genre]?.name +
                             (ind === items.length - 1 ? "" : ",")}{" "}
                         </span>
                       );

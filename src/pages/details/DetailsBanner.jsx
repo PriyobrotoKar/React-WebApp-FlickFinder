@@ -8,7 +8,7 @@ const DetailsBanner = ({ data, loading, url, mediaType }) => {
   return (
     <div>
       {!loading ? (
-        <div className=" h-[60svh] relative  banner  w-full">
+        <div className="min-h-[20rem] lg:min-h-[30rem] h-[60svh] relative  banner  w-full">
           <Img
             src={url.backdrop + data.backdrop_path}
             className={"object-cover object-[50%_20%] h-full w-full"}

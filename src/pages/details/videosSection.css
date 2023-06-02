@@ -1,0 +1,27 @@
+.video span {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.video span::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.2s ease-in-out;
+}
+.video button {
+  opacity: 0;
+}
+.video button:hover {
+  box-shadow: 0 0.8rem 2rem 0 #a00d0d71;
+}
+.video:hover button {
+  opacity: 1;
+}
+.video span:hover:before,
+.video button:hover + span::before {
+  background-color: rgba(0, 0, 0, 0.493);
+}

@@ -69,9 +69,12 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter class>
+    <BrowserRouter>
       <Sidebar />
-      <section className="w-full max-h-[100svh] py-0 overflow-y-scroll overflow-x-hidden">
+      <section
+        id="contentSection"
+        className="w-full h-[100lvh] py-0 overflow-y-scroll overflow-x-hidden"
+      >
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

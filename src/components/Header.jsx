@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header
       className={
-        "flex relative z-10   px-4 lg:px-10 justify-between items-center py-10 text-2xl sm:gap-7 " +
+        "flex relative z-10   px-4 lg:px-10 justify-between items-center py-6 lg:py-10 text-2xl sm:gap-7 " +
         (isInDetails
           ? "bg-gradient-to-b from-[#1a1d20]"
           : "text-neutral-500 dark:text-neutral-600 border-neutral-500  dark:border-neutral-600")

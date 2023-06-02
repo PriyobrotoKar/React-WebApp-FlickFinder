@@ -9,7 +9,7 @@ const ImportantInfo = ({ data, mediaType }) => {
         <img className="mx-auto w-[25%] xl:w-[18%]" src={polygon} alt="" />
       </div>
       <div className="bg-[#ffffff15] backdrop-blur-sm relative  text-center rounded-3xl flex justify-center items-center ">
-        <div className="font-SofiaSansCondensed text-xl xl:text-[1.5rem] 2xl:text-[2rem] tracking-wide leading-8">
+        <div className="font-SofiaSansCondensed text-xl xl:text-[1.5rem] 2xl:text-[2rem] tracking-wide leading-5 px-4">
           {data.status}
         </div>
         <div className="absolute bottom-2 uppercase tracking-wide text-base text-[#ffffff3b]">

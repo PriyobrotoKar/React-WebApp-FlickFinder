@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import useFetch from "../../hooks/useFetch";
-import { useSelector } from "react-redux";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useSelector } from "react-redux";
+import useFetch from "../../hooks/useFetch";
 import Img from "./Img";
 
-import "./heroBanner.css";
-import { fetchData } from "../../utils/api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fetchData } from "../../utils/api";
+import "./heroBanner.css";
 
 const Herobanner = () => {
   const [background, setBackground] = useState("");
@@ -67,7 +67,7 @@ const Herobanner = () => {
   return (
     <>
       {!loading && (
-        <div className="h-[50svh]  font-Poppins relative bg-clip-content overflow-hidden before:bg-gradient-to-t  before:from-[#000] before:rounded-[3rem] before:to-transparent before:absolute before:inset-0 before:w-full before:h-full">
+        <div className="min-h-[20rem] lg:min-h-[30rem] h-[50vh]  font-Poppins relative bg-clip-content overflow-hidden before:bg-gradient-to-t  before:from-[#000] before:rounded-[3rem] before:to-transparent before:absolute before:inset-0 before:w-full before:h-full">
           <div className="absolute top-6 lg:top-10 left-6 lg:left-10 bg-[#161616ab] flex justify-center gap-1 items-center px-4 py-2 rounded-3xl text-[0.8rem]">
             <div className="text-[#ffbd42]">
               <FontAwesomeIcon icon={faStar} />
