@@ -1,6 +1,6 @@
 import React from "react";
 
-import Img from "../home/Img";
+import Img from "../../components/Img";
 import ImportantInfo from "./ImportantInfo";
 import "./detailsBanner.css";
 

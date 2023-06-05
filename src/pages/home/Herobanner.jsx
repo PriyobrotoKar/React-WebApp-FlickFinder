@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useSelector } from "react-redux";
+import Img from "../../components/Img";
 import useFetch from "../../hooks/useFetch";
-import Img from "./Img";
 
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

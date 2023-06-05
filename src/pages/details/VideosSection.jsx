@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Img from "../home/Img";
+import Img from "../../components/Img";
 import VideoPopup from "./VideoPopup";
 import "./videosSection.css";
 

@@ -1,9 +1,18 @@
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchQuery = (e) => {
+    if (e.key === "Enter" && query.length > 0) {
+      navigate(`/search/${query}`);
+    }
+  };
+
   let location = useLocation();
   let isInDetails =
     location.pathname.includes("/movie") || location.pathname.includes("/tv");
@@ -31,21 +40,30 @@ const Header = () => {
       </div>
       <div
         className={
-          "flex items-center border-2 text-neutral-500 max-w-[30%]  sm:flex-1 sm:px-[0.8rem] rounded-full py-2 px-[0.65rem] text-[1.4rem] " +
-          (isInDetails
-            ? "text-neutral-100 dark:text-neutral-100 border-neutral-100 backdrop-blur-sm"
-            : "text-neutral-500 dark:text-neutral-600 border-neutral-500  dark:border-neutral-600")
+          "flex transition-all items-center border-2 text-neutral-500 max-w-[30%]  sm:flex-1 sm:px-[0.8rem] rounded-full py-2 px-[0.65rem] text-[1.4rem] " +
+          (query ? " border-neutral-100" : "") +
+          (isInDetails ? " border-neutral-100 backdrop-blur-sm" : "")
         }
       >
-        <FontAwesomeIcon icon={faMagnifyingGlass} className="" />
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          className={
+            "transition-all " +
+            (query ? "text-neutral-500 dark:text-neutral-100 " : "") +
+            (isInDetails ? "text-neutral-100" : "text-neutral-500")
+          }
+        />
         <input
           type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyUp={handleSearchQuery}
           placeholder="Search..."
           className={
-            "flex-auto w-0 sm:pl-3 text-xl bg-[transparent] outline-none  placeholder:font-Poppins text-neutral-500" +
+            "flex-auto w-0 sm:pl-3 text-xl bg-[transparent] outline-none font-Poppins " +
             (isInDetails
-              ? "placeholder:text-neutral-100 dark:placeholder:text-neutral-100"
-              : "placeholder:text-neutral-500 dark:placeholder:text-neutral-600")
+              ? "text-neutral-100 dark:text-neutral-100 placeholder:text-neutral-100 dark:placeholder:text-neutral-100"
+              : "text-neutral-500 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-600")
           }
         />
       </div>

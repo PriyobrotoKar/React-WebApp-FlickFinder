@@ -15,6 +15,7 @@ import Home from "./pages/home/Home";
 import Sidebar from "./components/Sidebar";
 import PagenNotFound from "./pages/404/PageNotFound";
 import About from "./pages/about/About";
+import SearchResults from "./pages/searchResults/SearchResults";
 
 function App() {
   const dispatch = useDispatch();
@@ -71,14 +72,12 @@ function App() {
   return (
     <BrowserRouter>
       <Sidebar />
-      <section
-        id="contentSection"
-        className="w-full h-[100lvh] py-0 overflow-y-scroll overflow-x-hidden"
-      >
+      <section id="contentSection" className="lg:ml-[19rem] overflow-x-hidden">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />
+          <Route path="/search/:query" element={<SearchResults />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<PagenNotFound />} />
         </Routes>

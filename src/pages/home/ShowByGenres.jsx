@@ -1,12 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import useFetch from "../../hooks/useFetch";
-import Img from "./Img";
-import ShowGenres from "./ShowGenres";
+import { useSelector } from "react-redux";
 import { fetchData } from "../../utils/api";
-import { data } from "autoprefixer";
+import ShowGenres from "./ShowGenres";
 
 const ShowByGenres = () => {
   //   const { data, loading } = useFetch("/trending/all/week");

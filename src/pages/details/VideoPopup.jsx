@@ -8,7 +8,7 @@ const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
   const hidePopup = () => {
     setShow(false);
     setPause(true);
-    document.getElementById("contentSection").style.overflow = "auto";
+    document.getElementById("contentSection").style.overflow = "";
     setVideoId(null);
     setPlayed(true);
   };

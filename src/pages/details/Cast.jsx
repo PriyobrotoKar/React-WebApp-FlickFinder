@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import avatarFallback from "../../assets/3973.jpg";
-import Img from "../home/Img";
+import Img from "../../components/Img";
 import "./cast.css";
 
 const Cast = ({ credits, castLoading, url }) => {
