@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MovieCard from "./MovieCard";
 
-const CaraosulSection = ({ data, loading, url, genres }) => {
+const CaraosulSection = ({ data, loading }) => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -41,7 +41,7 @@ const CaraosulSection = ({ data, loading, url, genres }) => {
       {!loading && (
         <Carousel responsive={responsive} className="overflow-visible z-10">
           {data?.results?.map((item) => {
-            return <MovieCard item={item} url={url} genres={genres} />;
+            return <MovieCard item={item} isFromSearch={false} />;
           })}
         </Carousel>
       )}

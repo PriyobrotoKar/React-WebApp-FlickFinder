@@ -12,7 +12,9 @@ export const fetchData = async (url, params) => {
     const { data } = await axios.get(BASE_URL + url, {
       headers,
       params: {
-        region: "IN",
+        // region: "IN",
+        // with_original_language: "hi",
+        // language: "en-IN",
         ...params,
       },
     });

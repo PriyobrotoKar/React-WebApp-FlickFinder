@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import avatarFallback from "../../assets/3973.jpg";
 import Img from "../../components/Img";
 import "./cast.css";
+import { useSelector } from "react-redux";
 
-const Cast = ({ credits, castLoading, url }) => {
+const Cast = ({ credits, castLoading }) => {
   const [showLess, setShowLess] = useState(true);
+  const { url, genres } = useSelector((state) => state.home);
   console.log(castLoading);
   return (
     <>
@@ -27,7 +29,9 @@ const Cast = ({ credits, castLoading, url }) => {
                       className={"h-full w-full object-cover object-center"}
                     />
                   </div>
-                  <div className="text-center text-base mt-2">{cast.name}</div>
+                  <div className="text-neutral-700 dark:text-neutral-100 text-center text-base mt-2">
+                    {cast.name}
+                  </div>
                 </div>
               );
             })}

@@ -18,26 +18,20 @@ const Details = () => {
   const { data: videos, loading: videosLoading } = useFetch(
     `/${mediaType}/${id}/videos`
   );
-  const { url, genres } = useSelector((state) => state.home);
+
   return (
     <div className="font-Poppins relative -top-32 ">
-      <DetailsBanner
-        data={data}
-        loading={loading}
-        url={url}
-        mediaType={mediaType}
-      />
+      <DetailsBanner data={data} loading={loading} mediaType={mediaType} />
       <Description
         data={data}
         loading={loading}
-        url={url}
         credits={credits}
         crewLoading={creditsLoading}
       />
-      <Cast credits={credits} castLoading={creditsLoading} url={url} />
+      <Cast credits={credits} castLoading={creditsLoading} />
       <VideosSection videos={videos} videosLoading={videosLoading} />
-      <Similar mediaType={mediaType} id={id} url={url} genres={genres} />
-      <Recommendation mediaType={mediaType} id={id} url={url} genres={genres} />
+      <Similar mediaType={mediaType} id={id} />
+      <Recommendation mediaType={mediaType} id={id} />
     </div>
   );
 };

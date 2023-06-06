@@ -6,8 +6,10 @@ import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { darkBtn } from "../store/darkBtnSlice";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = (props) => {
+  const navigate = useNavigate();
   const darkBtnObj = useSelector((state) => state.darkBtn);
   const dispatch = useDispatch();
   const toggleDarkLight = () => {
@@ -22,8 +24,14 @@ const Sidebar = (props) => {
   };
 
   return (
-    <section className="hidden fixed z-50 px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 lg:flex flex-col h-[100svh]">
-      <header className="font-Ramabhadra text-neutral-700 dark:text-neutral-100 text-2xl">
+    <section className="hidden fixed z-20 px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 lg:flex flex-col h-[100svh]">
+      <header
+        onClick={() => {
+          console.log("onClick");
+          navigate("/");
+        }}
+        className="font-Ramabhadra text-neutral-700 dark:text-neutral-100 text-2xl"
+      >
         FlickFinder<span className="text-primary">.</span>
       </header>
       <nav className="mt-10 flex-1">

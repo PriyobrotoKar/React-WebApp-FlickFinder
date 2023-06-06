@@ -2,7 +2,7 @@ import React from "react";
 import CaraosulSection from "../../components/CaraosulSection";
 import useFetch from "../../hooks/useFetch";
 
-const Similar = ({ mediaType, id, url, genres }) => {
+const Similar = ({ mediaType, id }) => {
   const { data, loading, error } = useFetch(`/${mediaType}/${id}/similar`);
 
   return (
@@ -12,12 +12,7 @@ const Similar = ({ mediaType, id, url, genres }) => {
           <div className="text-neutral-500 text-xl font-medium mb-2 mt-6">
             Similar
           </div>
-          <CaraosulSection
-            data={data}
-            loading={loading}
-            url={url}
-            genres={genres}
-          />
+          <CaraosulSection data={data} loading={loading} />
         </div>
       ) : (
         <div></div>

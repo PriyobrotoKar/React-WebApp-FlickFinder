@@ -26,12 +26,14 @@ const Description = ({ data, loading, url, credits, creditsLoading }) => {
             <h2 className="text-neutral-500 text-xl font-medium">
               Description
             </h2>
-            <p className="text-neutral-100 text-base">{data.overview}</p>
+            <p className="text-neutral-700 dark:text-neutral-100 text-base">
+              {data.overview}
+            </p>
           </div>
           <div className="flex gap-4 lg:gap-16 justify-between [&>*]:flex-1 flex-1">
             <div>
               <h2 className="text-neutral-500 text-xl font-medium">Director</h2>
-              <div className="text-neutral-100 text-base">
+              <div className="text-neutral-700 dark:text-neutral-100 text-base">
                 {directors?.map((d, i) => {
                   return (
                     <span>
@@ -44,7 +46,7 @@ const Description = ({ data, loading, url, credits, creditsLoading }) => {
             </div>
             <div>
               <h2 className="text-neutral-500 text-xl font-medium">Writers</h2>
-              <div className="text-neutral-100 text-base">
+              <div className="text-neutral-700 dark:text-neutral-100 text-base">
                 {writers?.map((w, i) => {
                   return (
                     <span>

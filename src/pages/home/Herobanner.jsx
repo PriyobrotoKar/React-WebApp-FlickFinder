@@ -57,7 +57,7 @@ const Herobanner = () => {
     fetchData(`/movie/${id}`).then((res) => {
       setBackground(res.backdrop_path);
       setMovieDetails({
-        title: res.original_title,
+        title: res.title,
         genres: res.genres,
         rating: res.vote_average,
       });

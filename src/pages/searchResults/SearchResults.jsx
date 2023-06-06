@@ -9,19 +9,21 @@ import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const SearchResults = () => {
-  let { query } = useParams();
+  const { query } = useParams();
   const [data, setData] = useState(null);
-  const [loading, setLaoding] = useState();
+  const [loading, setLoading] = useState();
   const [pageNum, setPageNum] = useState(1);
   const { url, genres } = useSelector((state) => state.home);
 
-  const fetchDataFromApi = () => {
-    setLaoding(true);
+  const fetchDataFromApi = (pageNum) => {
+    setLoading(true);
+
     fetchData("/search/multi", { query, page: pageNum }).then((res) => {
       setData(res);
-      setPageNum((prev) => prev + 1);
-      setLaoding(false);
+      setPageNum(pageNum + 1);
+      setLoading(false);
     });
+    console.log(pageNum);
   };
 
   const fetchNextDataFromApi = () => {
@@ -30,20 +32,20 @@ const SearchResults = () => {
       if (data?.results) {
         setData({ ...data, results: [...data?.results, ...res.results] });
       }
-      setPageNum((prev) => prev + 1);
+      setPageNum(pageNum + 1);
     });
   };
 
   useEffect(() => {
     setPageNum(1);
-    fetchDataFromApi();
+    setPageNum((state) => fetchDataFromApi(state));
   }, [query]);
 
   return (
     <>
       {!loading ? (
         data?.results?.length > 0 ? (
-          <div className="px-4 lg:px-10 space-y-6">
+          <div className="px-4 lg:px-10 space-y-6 pb-10">
             <div className="text-neutral-100 text-xl">
               {`Search ${
                 data?.results.length > 1 ? "results" : "result"
@@ -54,17 +56,22 @@ const SearchResults = () => {
               next={fetchNextDataFromApi}
               hasMore={pageNum <= data?.total_pages}
               loader={<div>Loading...</div>}
-              className="grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] md:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-6"
+              className={
+                data?.results?.length > 6
+                  ? "grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] md:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-6"
+                  : "grid grid-cols-[repeat(auto-fit,7rem)] md:grid-cols-[repeat(auto-fit,13rem)] gap-6"
+              }
               style={{ overflow: "visible" }}
             >
               {data?.results?.map((item, ind) => {
+                if (item.media_type === "person") return;
                 return (
                   <MovieCard
                     key={ind}
                     item={item}
                     url={url}
                     genres={genres}
-                    isFromSearch={true}
+                    notFromHome={true}
                   />
                 );
               })}

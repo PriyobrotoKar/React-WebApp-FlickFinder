@@ -53,15 +53,15 @@ const VideosSection = ({ videos, videosLoading }) => {
           >
             {videos?.results?.map((video) => {
               return (
-                <div
-                  onClick={() => {
-                    setShow(true);
-                    setVideoId(video.key);
-                  }}
-                  className=" mr-4 "
-                >
+                <div className=" mr-4 ">
                   <div className="video">
-                    <button className="bg-primary px-4 py-2 text-neutral-100 rounded-2xl z-10 absolute top-1/2 left-1/2 -translate-x-[60%] -translate-y-[65%] transition-all duration-200">
+                    <button
+                      onClick={() => {
+                        setShow(true);
+                        setVideoId(video.key);
+                      }}
+                      className="bg-primary px-4 py-2 text-neutral-100 rounded-2xl z-10 absolute top-1/2 left-1/2 -translate-x-[60%] -translate-y-[65%] transition-all duration-200"
+                    >
                       Watch
                     </button>
                     <Img

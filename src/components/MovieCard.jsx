@@ -3,15 +3,17 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Img from "./Img";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const MovieCard = ({ item, url, genres, isFromSearch }) => {
+const MovieCard = ({ item, notFromHome }) => {
+  const { url, genres } = useSelector((state) => state.home);
   const navigate = useNavigate();
   return (
     <div
       key={item?.id}
       className={
-        "relative h-full min-h-[10rem]  text-neutral-100 hover:scale-110 transition-all duration-200 cursor-pointer " +
-        (isFromSearch ? "" : "mr-6")
+        "relative h-full min-h-[10rem] font-Poppins  text-neutral-100 hover:scale-110 transition-all duration-200 cursor-pointer " +
+        (notFromHome ? "" : "mr-6")
       }
     >
       <div className="absolute z-20 top-2 left-2 bg-[#161616ab] flex justify-center gap-1 items-center px-4 py-2 rounded-3xl text-[0.8rem]">
@@ -29,18 +31,20 @@ const MovieCard = ({ item, url, genres, isFromSearch }) => {
         />
       </div>
       <div className="absolute bottom-2 lg:bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-20">
-        <h4 className="text-xl font-medium tracking-wide truncate w-[80%]">
-          {item?.original_title || item?.original_name}
+        <h4 className={"text-xl font-medium tracking-wide truncate"}>
+          {item?.title || item?.name}
         </h4>
+
         <div className="text-base leading-2 opacity-60">
-          {item?.genre_ids?.splice(0, 3).map((genre, ind, items) => {
+          {item?.genre_ids?.map((genre, ind, items) => {
             return (
               <span key={ind}>
-                {genres[genre]?.name + (ind === items.length - 1 ? "" : ",")}{" "}
+                {genres[genre]?.name + (ind === items.length - 1 ? "" : ", ")}
               </span>
             );
           })}
         </div>
+
         <button
           onClick={() =>
             navigate(`/${item?.media_type || "movie"}/${item?.id}`)

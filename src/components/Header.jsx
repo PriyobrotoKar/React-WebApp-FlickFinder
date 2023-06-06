@@ -35,7 +35,13 @@ const Header = () => {
       >
         <FontAwesomeIcon icon={faBars} />
       </div>
-      <div className="font-Ramabhadra text-neutral-700 dark:text-neutral-100 lg:hidden">
+      <div
+        onClick={() => {
+          console.log("onClick");
+          navigate("/");
+        }}
+        className="font-Ramabhadra text-neutral-700 dark:text-neutral-100 lg:hidden"
+      >
         FlickFinder<span className="text-primary">.</span>
       </div>
       <div

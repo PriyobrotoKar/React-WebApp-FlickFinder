@@ -16,6 +16,7 @@ import Sidebar from "./components/Sidebar";
 import PagenNotFound from "./pages/404/PageNotFound";
 import About from "./pages/about/About";
 import SearchResults from "./pages/searchResults/SearchResults";
+import ComingSoon from "./pages/comingSoon/ComingSoon";
 
 function App() {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />
           <Route path="/search/:query" element={<SearchResults />} />
+          <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<PagenNotFound />} />
         </Routes>
