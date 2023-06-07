@@ -7,6 +7,7 @@ import ShowGenres from "./ShowGenres";
 const ShowByGenres = () => {
   //   const { data, loading } = useFetch("/trending/all/week");
   const loading = false;
+  let responses = [];
   let promises = [];
   const { url, genres } = useSelector((state) => state.home);
   // console.log(genres);
@@ -16,7 +17,7 @@ const ShowByGenres = () => {
       promises.push(fetchData("/discover/movie", { with_genres: g }));
     }
 
-    const responses = await Promise.all(promises);
+    responses = await Promise.all(promises);
     const keys = Object.keys(genres);
     let i = 0;
     while (i < 20) {
@@ -24,7 +25,7 @@ const ShowByGenres = () => {
 
       i++;
     }
-    // console.log(responses);
+    console.log(responses);
     return responses;
   };
 

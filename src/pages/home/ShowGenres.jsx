@@ -7,7 +7,6 @@ const ShowGenres = ({ responses, loading, url, genres }) => {
   useEffect(() => {
     responses.then((res) => {
       setDatas(res);
-      console.log(datas);
     });
   });
 

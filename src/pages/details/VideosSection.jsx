@@ -68,7 +68,7 @@ const VideosSection = ({ videos, videosLoading }) => {
                       src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
                     />
                   </div>
-                  <div className="text-neutral-100 text-base truncate">
+                  <div className="text-neutral-700 dark:text-neutral-100 text-base truncate">
                     {video.name}
                   </div>
                 </div>

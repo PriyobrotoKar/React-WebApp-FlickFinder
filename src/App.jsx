@@ -1,6 +1,6 @@
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { darkBtn } from "./store/darkBtnSlice";
@@ -19,6 +19,7 @@ import SearchResults from "./pages/searchResults/SearchResults";
 import ComingSoon from "./pages/comingSoon/ComingSoon";
 
 function App() {
+  const [showSidebar, setShowSidebar] = useState();
   const dispatch = useDispatch();
   const darkLightMode = () => {
     if (
@@ -72,9 +73,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Sidebar />
-      <section id="contentSection" className="lg:ml-[19rem] overflow-x-hidden">
-        <Header />
+      <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      <section
+        id="contentSection"
+        onClick={(e) => {
+          e.target.parentElement.classList.contains("hamburger")
+            ? ""
+            : setShowSidebar(false);
+        }}
+        className="lg:ml-[19rem] overflow-x-hidden"
+      >
+        <Header setShowSidebar={setShowSidebar} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useSelector } from "react-redux";
@@ -9,24 +9,54 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchData } from "../../utils/api";
 import "./heroBanner.css";
+import { useNavigate } from "react-router-dom";
 
 const Herobanner = () => {
+  const navigate = useNavigate();
+  const carousel = useRef();
   const [background, setBackground] = useState("");
   const [popMovies, setpopMovies] = useState([""]);
+  const [currIndex, setCurrIndex] = useState(0);
   const [movieDetails, setMovieDetails] = useState({
+    id: 0,
     title: "",
     genres: [],
     rating: 0,
   });
   const { data, loading } = useFetch("/movie/popular");
   const { url } = useSelector((state) => state.home);
-  let slideValue = 0;
+
+  useEffect(() => {
+    getMovieDetails(currIndex);
+    document.querySelectorAll(".img").forEach((elem) => {
+      if (elem.classList.contains("thumb_active")) {
+        elem.classList.remove("thumb_active");
+      }
+    });
+    if (document.body.clientWidth <= 1024) {
+      if (currIndex % 2 == 0) {
+        carousel?.current?.goToSlide(currIndex);
+      }
+    } else if (responsive.desktop) {
+      if (currIndex % 4 == 0) {
+        carousel?.current?.goToSlide(currIndex);
+      }
+    }
+    document
+      .querySelector(".carousel ul")
+      ?.children.item(currIndex)
+      ?.querySelector(".img")
+      ?.classList.add("thumb_active");
+    console.log();
+  }, [popMovies, currIndex]);
 
   useEffect(() => {
     const populateArray = async () => {
       const movies = await data.results;
       setpopMovies(movies);
-      getMovieDetails(movies[0].id);
+      setInterval(() => {
+        setCurrIndex((prev) => (prev === movies.length - 1 ? 0 : prev + 1));
+      }, 5000);
     };
 
     data ? populateArray() : "";
@@ -49,14 +79,16 @@ const Herobanner = () => {
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
+      items: 0,
     },
   };
 
-  const getMovieDetails = (id) => {
+  const getMovieDetails = (ind) => {
+    const id = popMovies[ind].id;
     fetchData(`/movie/${id}`).then((res) => {
       setBackground(res.backdrop_path);
       setMovieDetails({
+        id: res.id,
         title: res.title,
         genres: res.genres,
         rating: res.vote_average,
@@ -89,21 +121,25 @@ const Herobanner = () => {
                 );
               })}
             </div>
-            <button className="px-6 py-3 mt-4 bg-primary hover:bg-[#ff4d4d] text-xl rounded-xl text-neutral-100 hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#ff000050] transition-all">
+            <button
+              onClick={() => navigate(`/movie/${movieDetails.id}`)}
+              className="px-6 py-3 mt-4 bg-primary hover:bg-[#ff4d4d] text-xl rounded-xl text-neutral-100 hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#ff000050] transition-all"
+            >
               Watch
             </button>
           </div>
           <Carousel
             responsive={responsive}
-            className="absolute bottom-10 right-0 w-[30%] lg:w-[40%] 2xl:w-[30%] z-10"
+            ref={carousel}
+            className=" carousel absolute bottom-10 right-0 w-[30%] lg:w-[40%] 2xl:w-[30%] z-10"
           >
             {popMovies.map((elem, ind) => {
               return (
                 <div
-                  className="h-full poster mx-4 lg:mx-1 xl:mx-2  rounded-[20%] overflow-hidden"
+                  className=" h-full poster mx-4 lg:mx-1 xl:mx-2  rounded-[20%] overflow-hidden"
                   key={elem.id}
                   onClick={(e) => {
-                    getMovieDetails(elem.id);
+                    setCurrIndex(ind);
                     document.querySelectorAll(".img").forEach((elem) => {
                       if (elem.classList.contains("thumb_active")) {
                         elem.classList.remove("thumb_active");
@@ -112,7 +148,7 @@ const Herobanner = () => {
                     e.target.classList.add("thumb_active");
                   }}
                 >
-                  <Img
+                  <img
                     key={elem.id}
                     src={url.backdrop + elem.poster_path}
                     className={"h-full object-cover img cursor-pointer"}

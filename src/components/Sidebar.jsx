@@ -24,9 +24,17 @@ const Sidebar = (props) => {
   };
 
   return (
-    <section className="hidden fixed z-20 px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 lg:flex flex-col h-[100svh]">
+    <section
+      className={
+        "dark:bg-gradient-to-t dark:from-[#181A1E] dark:to-[#1D2023] bg-gradient-to-t from-[#DCDDE8] to-[#FAFCFF] lg:bg-none fixed z-30 px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 flex flex-col h-[100svh] transition-all duration-200 " +
+        (props.showSidebar
+          ? "translate-x-0"
+          : "-translate-x-full lg:translate-x-0")
+      }
+    >
       <header
         onClick={() => {
+          props.setShowSidebar(false);
           console.log("onClick");
           navigate("/");
         }}
@@ -42,6 +50,7 @@ const Sidebar = (props) => {
               <li key={ind} className="">
                 <NavLink
                   to={elem.path}
+                  onClick={() => props.setShowSidebar(false)}
                   className={({ isActive }) =>
                     isActive
                       ? "activeLink flex items-center gap-4 text-xl text-neutral-500 dark:text-neutral-100 font-medium transition-all duration-200"
