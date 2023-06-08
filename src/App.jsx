@@ -2,7 +2,13 @@ import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { darkBtn } from "./store/darkBtnSlice";
 import { getApiConfiguration, getGernres } from "./store/homeSlice";
 import { fetchData } from "./utils/api";
@@ -17,6 +23,7 @@ import PagenNotFound from "./pages/404/PageNotFound";
 import About from "./pages/about/About";
 import SearchResults from "./pages/searchResults/SearchResults";
 import ComingSoon from "./pages/comingSoon/ComingSoon";
+import Watchlist from "./pages/watchlist/Watchlist";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState();
@@ -44,6 +51,10 @@ function App() {
       };
       dispatch(getApiConfiguration(url));
     });
+  };
+
+  const checkLogin = () => {
+    console.log(location.pathname);
   };
 
   const getAllGenres = async () => {
@@ -81,7 +92,7 @@ function App() {
             ? ""
             : setShowSidebar(false);
         }}
-        className="lg:ml-[19rem] overflow-x-hidden"
+        className="lg:ml-[19rem] overflow-x-hidden min-h-[100svh] flex flex-col"
       >
         <Header setShowSidebar={setShowSidebar} />
         <Routes>
@@ -89,6 +100,7 @@ function App() {
           <Route path="/:mediaType/:id" element={<Details />} />
           <Route path="/search/:query" element={<SearchResults />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
+          <Route path="/watchlist" element={<Watchlist />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<PagenNotFound />} />
         </Routes>

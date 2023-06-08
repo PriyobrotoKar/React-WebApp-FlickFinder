@@ -12,7 +12,7 @@ const MovieCard = ({ item, notFromHome }) => {
     <div
       key={item?.id}
       className={
-        "relative h-full min-h-[10rem] font-Poppins  text-neutral-100 hover:scale-110 transition-all duration-200 cursor-pointer " +
+        "relative h-full min-h-[15rem] font-Poppins  text-neutral-100 hover:scale-110 transition-all duration-200 cursor-pointer " +
         (notFromHome ? "" : "mr-6")
       }
     >

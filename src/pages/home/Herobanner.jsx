@@ -125,7 +125,7 @@ const Herobanner = () => {
               onClick={() => navigate(`/movie/${movieDetails.id}`)}
               className="px-6 py-3 mt-4 bg-primary hover:bg-[#ff4d4d] text-xl rounded-xl text-neutral-100 hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#ff000050] transition-all"
             >
-              Watch
+              More Info
             </button>
           </div>
           <Carousel

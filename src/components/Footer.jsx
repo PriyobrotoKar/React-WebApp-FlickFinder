@@ -12,7 +12,7 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
 const Footer = () => {
   return (
-    <footer className="text-center bg-[#3b3b3b70] space-y-10 rounded-t-2xl font-Poppins p-8 pt-16">
+    <footer className="text-center bg-[#3b3b3b70] space-y-10 rounded-t-2xl font-Poppins p-8 pt-16 mt-auto">
       <div className="container mx-auto text-left font-Ramabhadra text-neutral-100 text-2xl text">
         FlickFinder<span className="text-primary">.</span>
       </div>

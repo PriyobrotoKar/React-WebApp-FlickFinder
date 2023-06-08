@@ -1,24 +1,60 @@
 import millify from "millify";
 import React, { useState } from "react";
 import polygon from "../../assets/Polygon 1.svg";
-import { fetchStreamData } from "../../utils/streamingApi";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ImportantInfo = ({ data, mediaType }) => {
-  const [link, setLink] = useState();
-  fetchStreamData({ tmdb_id: `${mediaType}/${data.id}` }).then((res) => {
-    console.log(
-      res.streamingInfo.in[Object.keys(res.streamingInfo.in)[0]][0].link
-    );
-    setLink(res.streamingInfo.in[Object.keys(res.streamingInfo.in)[0]][0].link);
-  });
+  const [showAdded, setShowAdded] = useState(false);
+  const [alreadyAdded, setAlreadyAdded] = useState(false);
+  const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+  let f = 0;
+  const addToWatchlist = () => {
+    watchlist.forEach((element) => {
+      if (element.id === data.id) {
+        f = 1;
+        return;
+      }
+    });
+    if (f === 1) {
+      setAlreadyAdded(true);
+      setShowAdded(true);
+      setTimeout(() => setShowAdded(false), 2000);
+      return;
+    }
+    setShowAdded(true);
+    setTimeout(() => setShowAdded(false), 2000);
+    watchlist.push({
+      id: data.id,
+      title: data.title || data.name,
+      poster_path: data.poster_path,
+      vote_average: data.vote_average,
+      genre_ids: data.genres.map((elem) => {
+        return elem.id;
+      }),
+      mediaType: mediaType,
+    });
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  };
   return (
     <div className="grid auto-rows-[minmax(6rem,1fr)]  xl:auto-rows-[minmax(7rem,1fr)] 2xl:auto-rows-[minmax(9rem,1fr)] grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] flex-wrap gap-2 xl:gap-4 [&>*]:flex-1 w-full text-neutral-100">
-      <Link to={link} target="_blank">
-        <div className="h-full bg-primary relative cursor-pointer flex items-center rounded-3xl  hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#ff000050] transition-all duration-200">
-          <img className="mx-auto w-[25%] xl:w-[18%]" src={polygon} alt="" />
-        </div>
-      </Link>
+      <div
+        className={
+          "bg-neutral-500 px-4 py-2 pt-[0.6rem] -bottom-2 rounded-xl absolute  left-1/2 -translate-x-1/2 transition-all duration-300 " +
+          (showAdded
+            ? "translate-y-full opacity-100"
+            : "translate-y-0 opacity-0")
+        }
+      >
+        {alreadyAdded ? "Already Added" : "Added to Watchlist"}
+      </div>
+      <div
+        onClick={addToWatchlist}
+        className="h-full bg-primary relative cursor-pointer flex justify-center items-center rounded-3xl  hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#ff000050] transition-all duration-200"
+      >
+        <FontAwesomeIcon className="text-[2.8rem]" icon={faHeart} />
+      </div>
+
       <div className="bg-[#d8d9de7e] dark:bg-[#ffffff15] backdrop-blur-sm relative  text-center rounded-3xl flex justify-center items-center ">
         <div className="text-neutral-600 dark:text-neutral-100 font-SofiaSansCondensed text-xl xl:text-[1.5rem] 2xl:text-[2rem] tracking-wide leading-5 px-4">
           {data.status}

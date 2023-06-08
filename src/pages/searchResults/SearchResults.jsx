@@ -55,7 +55,11 @@ const SearchResults = () => {
               dataLength={data?.results?.length || []}
               next={fetchNextDataFromApi}
               hasMore={pageNum <= data?.total_pages}
-              loader={<div>Loading...</div>}
+              loader={
+                <div>
+                  <img className="w-32 mx-auto" src="/loader.svg" alt="" />
+                </div>
+              }
               className={
                 data?.results?.length > 6
                   ? "grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] md:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-6"
@@ -78,10 +82,17 @@ const SearchResults = () => {
             </InfiniteScroll>
           </div>
         ) : (
-          <div>Result not found</div>
+          <div className="pt-32 flex-[0_0_40rem]">
+            <img className="w-52 mx-auto" src="/noresult.png" alt="" />
+            <div className="text-center font-semibold text-xl text-neutral-600 dark:text-neutral-500">
+              No such result found
+            </div>
+          </div>
         )
       ) : (
-        <div>Loading..</div>
+        <div>
+          <img className="w-32 mx-auto" src="/loader.svg" alt="" />
+        </div>
       )}
     </>
   );

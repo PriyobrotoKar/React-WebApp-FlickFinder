@@ -10,7 +10,7 @@ const SidebarData = [
   {
     title: "WatchList",
     icon: <FontAwesomeIcon icon={faHeart} />,
-    path: "/watchlists",
+    path: "/watchlist",
   },
   {
     title: "Coming Soon",

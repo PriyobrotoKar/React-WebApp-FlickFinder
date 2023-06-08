@@ -1,8 +1,7 @@
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
 const Header = (props) => {
   const [query, setQuery] = useState("");
 
@@ -45,21 +44,18 @@ const Header = (props) => {
 
       <div
         className={
-          "searchBox relative z-30 backdrop-blur-sm  flex flex-1 transition-all duration-200 items-center border-2 text-neutral-500 sm:max-w-[30%]  sm:flex-1 sm:px-[0.8rem] rounded-full py-2 px-[0.65rem] text-[1.4rem] " +
-          (query ? "border-neutral-700 dark:border-neutral-100" : "") +
+          "searchBox relative z-30 backdrop-blur-sm  flex flex-1 transition-all duration-200 items-center border-2  sm:max-w-[30%]  sm:flex-1 sm:px-[0.8rem] rounded-full py-2 px-[0.65rem] text-[1.4rem] " +
+          (query
+            ? isInDetails
+              ? " border-neutral-100"
+              : "border-neutral-700 dark:border-neutral-100 text-neutral-700 dark:text-neutral-100"
+            : "") +
           (isInDetails
-            ? " bg-[transparent] dark:bg-[transparent] border-neutral-100 "
-            : " bg-[#fafcffbe] dark:bg-[#1d2023c0]")
+            ? " text-neutral-100 bg-[transparent] dark:bg-[transparent] border-neutral-100 "
+            : " text-neutral-500  bg-[#fafcffbe] dark:bg-[#1d2023c0] border-neutral-500")
         }
       >
-        <FontAwesomeIcon
-          icon={faMagnifyingGlass}
-          className={
-            "searchIcon transition-all " +
-            (query ? "text-neutral-700 dark:text-neutral-100 " : "") +
-            (isInDetails ? "text-neutral-100" : "text-neutral-500")
-          }
-        />
+        <FontAwesomeIcon icon={faMagnifyingGlass} className={"searchIcon "} />
         <input
           type="text"
           value={query}
@@ -68,9 +64,7 @@ const Header = (props) => {
           placeholder="Search..."
           className={
             "searchInput flex-auto pl-2 w-0 text-xl bg-[transparent] outline-none font-Poppins " +
-            (isInDetails
-              ? "text-neutral-100 dark:text-neutral-100 placeholder:text-neutral-100 dark:placeholder:text-neutral-100"
-              : "text-neutral-700 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-500")
+            (isInDetails ? "placeholder:text-neutral-100" : "")
           }
         />
       </div>
