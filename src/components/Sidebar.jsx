@@ -43,14 +43,19 @@ const Sidebar = (props) => {
         FlickFinder<span className="text-primary">.</span>
       </header>
       <nav className="mt-10 flex-1">
-        <h3 className="text-neutral-500 font-medium mb-8">Menu</h3>
-        <ul className=" space-y-6">
+        <h3 className="text-neutral-500 font-medium mb-8 landscape:mb-4">
+          Menu
+        </h3>
+        <ul className=" space-y-6 landscape:space-y-2">
           {SidebarData.map((elem, ind) => {
             return (
               <li key={ind} className="">
                 <NavLink
                   to={elem.path}
-                  onClick={() => props.setShowSidebar(false)}
+                  onClick={() => {
+                    props.setShowSidebar(false);
+                    document.body.style.overflow = "";
+                  }}
                   className={({ isActive }) =>
                     isActive
                       ? "activeLink flex items-center gap-4 text-xl text-neutral-500 dark:text-neutral-100 font-medium transition-all duration-200"

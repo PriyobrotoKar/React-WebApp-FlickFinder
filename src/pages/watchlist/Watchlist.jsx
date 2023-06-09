@@ -23,8 +23,10 @@ const Watchlist = () => {
       <div
         className={
           watchlist?.length > 6
-            ? "flex-[0_0_40rem] grid auto-rows-min grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] md:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-6 px-4 lg:px-10 pb-20"
-            : "flex-[0_0_40rem] grid auto-rows-min grid-cols-[repeat(auto-fit,7rem)] md:grid-cols-[repeat(auto-fit,13rem)] gap-6 px-4 lg:px-10 pb-20"
+            ? "flex-[0_0_40rem] grid auto-rows-min grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] md:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-6 px-4 lg:px-10 pb-20 "
+            : watchlist?.length === 1
+            ? "flex-[0_0_40rem] grid auto-rows-min grid-cols-[repeat(auto-fit,10rem)] md:grid-cols-[repeat(auto-fit,13rem)] gap-6 px-4 lg:px-10 pb-20 "
+            : "flex-[0_0_40rem] grid auto-rows-min grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] md:grid-cols-[repeat(auto-fit,13rem)] gap-6 px-4 lg:px-10 pb-20 "
         }
       >
         {watchlist?.map((item, ind) => {

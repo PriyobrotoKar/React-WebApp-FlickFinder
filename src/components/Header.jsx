@@ -19,6 +19,7 @@ const Header = (props) => {
 
   const hamburgerClickHandle = () => {
     props.setShowSidebar(true);
+    document.body.style.overflow = "hidden";
   };
 
   return (

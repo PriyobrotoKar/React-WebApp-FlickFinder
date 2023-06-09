@@ -3,12 +3,12 @@ import ReactPlayer from "react-player";
 
 const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
   if (show) {
-    document.getElementById("contentSection").style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
   }
   const hidePopup = () => {
     setShow(false);
     setPause(true);
-    document.getElementById("contentSection").style.overflow = "";
+    document.body.style.overflow = "";
     setVideoId(null);
     setPlayed(true);
   };

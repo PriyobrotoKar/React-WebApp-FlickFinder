@@ -63,7 +63,7 @@ const SearchResults = () => {
               className={
                 data?.results?.length > 6
                   ? "grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] md:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-6"
-                  : "grid grid-cols-[repeat(auto-fit,7rem)] md:grid-cols-[repeat(auto-fit,13rem)] gap-6"
+                  : "grid grid-cols-[repeat(auto-fit,9rem)] md:grid-cols-[repeat(auto-fit,13rem)] gap-6"
               }
               style={{ overflow: "visible" }}
             >

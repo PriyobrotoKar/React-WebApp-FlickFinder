@@ -35,7 +35,7 @@ const ImportantInfo = ({ data, mediaType }) => {
       genre_ids: data.genres.map((elem) => {
         return elem.id;
       }),
-      mediaType: mediaType,
+      media_type: mediaType,
     });
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   };
@@ -56,7 +56,10 @@ const ImportantInfo = ({ data, mediaType }) => {
         onClick={addToWatchlist}
         className="h-full bg-primary relative cursor-pointer flex justify-center items-center rounded-3xl  hover:shadow-[0_0.8rem_2rem_0rem] hover:shadow-[#ff000050] transition-all duration-200"
       >
-        <FontAwesomeIcon className="text-[2.8rem]" icon={faHeart} />
+        <FontAwesomeIcon
+          className="text-[2.5rem] md:text-[2.8rem]"
+          icon={faHeart}
+        />
       </div>
 
       <div className="bg-[#d8d9de7e] dark:bg-[#ffffff15] backdrop-blur-sm relative  text-center rounded-3xl flex justify-center items-center ">

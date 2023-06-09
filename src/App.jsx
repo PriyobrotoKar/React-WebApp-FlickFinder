@@ -88,9 +88,11 @@ function App() {
       <section
         id="contentSection"
         onClick={(e) => {
-          e.target.parentElement.classList.contains("hamburger")
+          console.log(e.target);
+          e.target.parentElement.classList.contains("hamburger") ||
+          e.target.classList.contains("hamburger")
             ? ""
-            : setShowSidebar(false);
+            : (setShowSidebar(false), (document.body.style.overflow = ""));
         }}
         className="lg:ml-[19rem] overflow-x-hidden min-h-[100svh] flex flex-col"
       >

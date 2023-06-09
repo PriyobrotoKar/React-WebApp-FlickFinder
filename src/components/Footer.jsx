@@ -15,7 +15,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer className="text-center bg-[#3b3b3b70] space-y-10 rounded-t-2xl font-Poppins p-8 pt-16 mt-auto">
-      <div className="container mx-auto text-left font-Ramabhadra text-neutral-700 dark:text-neutral-100 text-2xl text">
+      <div className="container mx-auto  md:text-left font-Ramabhadra text-neutral-700 dark:text-neutral-100 text-2xl text">
         FlickFinder<span className="text-primary">.</span>
       </div>
       <div className="space-y-5 container mx-auto sm:flex sm:space-y-0 sm:flex-wrap sm:justify-between sm:gap-8">
