@@ -26,7 +26,7 @@ const Sidebar = (props) => {
   return (
     <section
       className={
-        "dark:bg-gradient-to-t dark:from-[#181A1E] dark:to-[#1D2023] bg-gradient-to-t from-[#DCDDE8] to-[#FAFCFF] lg:bg-none fixed z-30 px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 flex flex-col h-[100svh] transition-all duration-200 " +
+        "dark:bg-gradient-to-t dark:from-[#181A1E] dark:to-[#1D2023] bg-gradient-to-t from-[#DCDDE8] to-[#FAFCFF] lg:bg-none fixed z-30 px-10 py-8 font-Poppins border-r border-r-[#CDD2E0] dark:border-r-neutral-700 flex flex-col h-[100dvh] transition-all duration-200 " +
         (props.showSidebar
           ? "translate-x-0"
           : "-translate-x-full lg:translate-x-0")
