@@ -6,22 +6,25 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ImportantInfo = ({ data, mediaType }) => {
   const [showAdded, setShowAdded] = useState(false);
-  const [alreadyAdded, setAlreadyAdded] = useState(false);
+  const [removes, setRemoved] = useState(false);
   const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
   let f = 0;
   const addToWatchlist = () => {
     watchlist.forEach((element) => {
       if (element.id === data.id) {
+        watchlist.splice(watchlist.indexOf(element), 1);
+        localStorage.setItem("watchlist", JSON.stringify(watchlist));
+        setRemoved(true);
+        setShowAdded(true);
+        setTimeout(() => setShowAdded(false), 2000);
         f = 1;
         return;
       }
     });
     if (f === 1) {
-      setAlreadyAdded(true);
-      setShowAdded(true);
-      setTimeout(() => setShowAdded(false), 2000);
       return;
     }
+    setRemoved(false);
     setShowAdded(true);
     setTimeout(() => setShowAdded(false), 2000);
     watchlist.push({
@@ -40,13 +43,14 @@ const ImportantInfo = ({ data, mediaType }) => {
     <div className="grid auto-rows-[minmax(6rem,1fr)]  xl:auto-rows-[minmax(7rem,1fr)] 2xl:auto-rows-[minmax(9rem,1fr)] grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] flex-wrap gap-2 xl:gap-4 [&>*]:flex-1 w-full text-neutral-100">
       <div
         className={
-          "bg-neutral-500 px-4 py-2 pt-[0.6rem] -bottom-2 rounded-xl absolute  left-1/2 -translate-x-1/2 transition-all duration-300 " +
+          " px-4 py-2 pt-[0.6rem] -bottom-4 rounded-xl absolute  left-1/2 -translate-x-1/2 transition-all duration-300 " +
+          (removes ? "bg-primary " : "bg-[#44ad44] ") +
           (showAdded
             ? "translate-y-full opacity-100"
-            : "translate-y-0 opacity-0")
+            : "translate-y-0 opacity-0 ")
         }
       >
-        {alreadyAdded ? "Already Added" : "Added to Watchlist"}
+        {removes ? "Removed" : "Added to Watchlist"}
       </div>
       <div
         onClick={addToWatchlist}

@@ -8,12 +8,16 @@ const Similar = ({ mediaType, id }) => {
   return (
     <>
       {!loading ? (
-        <div className="px-4 lg:px-10">
-          <div className="text-neutral-500 text-xl font-medium mb-2 mt-6">
-            Similar
+        data.results.length ? (
+          <div className="px-4 lg:px-10">
+            <div className="text-neutral-500 text-xl font-medium mb-2 mt-6">
+              Similar
+            </div>
+            <CaraosulSection data={data} loading={loading} />
           </div>
-          <CaraosulSection data={data} loading={loading} />
-        </div>
+        ) : (
+          ""
+        )
       ) : (
         <div></div>
       )}

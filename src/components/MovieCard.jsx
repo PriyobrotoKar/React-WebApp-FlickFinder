@@ -1,9 +1,12 @@
 import React from "react";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import Img from "./Img";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./MovieCard.css";
 
 const MovieCard = ({ item, notFromHome }) => {
   const { url, genres } = useSelector((state) => state.home);
@@ -24,10 +27,14 @@ const MovieCard = ({ item, notFromHome }) => {
           {item?.vote_average?.toFixed(1)}
         </div>
       </div>
-      <div className="rounded-[1.2rem]  hover:shadow-xl transition-all duration-200 overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:w-full before:h-full before:z-10 before:bg-gradient-to-t before:from-[#000] before:to-transparent">
+      <div className="imageContainer rounded-[1.2rem] h-full  hover:shadow-xl transition-all duration-200 overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:w-full before:h-full before:z-10 before:bg-gradient-to-t before:from-[#000] before:to-transparent">
         <Img
-          src={url.backdrop + item?.poster_path}
-          className={"inline-block"}
+          src={
+            item?.poster_path
+              ? url.backdrop + item?.poster_path
+              : "/No-Image-Placeholder.svg"
+          }
+          className={"inline-block h-full object-cover"}
         />
       </div>
       <div className="absolute bottom-2 lg:bottom-4 left-1/2 -translate-x-1/2 w-[90%] z-20">

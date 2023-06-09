@@ -9,17 +9,21 @@ const Recommendation = ({ mediaType, id, url, genres }) => {
   return (
     <>
       {!loading ? (
-        <div className="px-4 lg:px-10">
-          <div className="text-neutral-500 text-xl font-medium mb-2 mt-6">
-            Recommendation
+        data.results.length ? (
+          <div className="px-4 lg:px-10">
+            <div className="text-neutral-500 text-xl font-medium mb-2 mt-6">
+              Recommendation
+            </div>
+            <CaraosulSection
+              data={data}
+              loading={loading}
+              url={url}
+              genres={genres}
+            />
           </div>
-          <CaraosulSection
-            data={data}
-            loading={loading}
-            url={url}
-            genres={genres}
-          />
-        </div>
+        ) : (
+          ""
+        )
       ) : (
         <div></div>
       )}

@@ -5,18 +5,21 @@ import "./cast.css";
 import { useSelector } from "react-redux";
 
 const Cast = ({ credits, castLoading }) => {
-  const [showLess, setShowLess] = useState(true);
   const { url, genres } = useSelector((state) => state.home);
   console.log(castLoading);
   return (
     <>
       {!castLoading ? (
-        <div className=" mt-6">
+        <div className={"relative mt-6 "}>
           <h3 className="text-neutral-500 text-xl font-medium px-4 lg:px-10 ">
             Notable Cast
           </h3>
-          <div className="text-neutral-100 px-4 lg:px-10 flex lg:flex-wrap gap-5 mt-4 overflow-x-scroll">
-            {credits?.cast?.slice(0, showLess ? 12 : -1).map((cast) => {
+          <div
+            className={
+              "text-neutral-100 px-4  lg:px-10 flex lg:flex-wrap gap-5 mt-4 overflow-x-scroll "
+            }
+          >
+            {credits?.cast?.slice(0, 10).map((cast) => {
               return (
                 <div className="w-16">
                   <div className="w-16 h-16 cast rounded-full overflow-hidden mx-auto">
@@ -35,12 +38,6 @@ const Cast = ({ credits, castLoading }) => {
                 </div>
               );
             })}
-          </div>
-          <div
-            onClick={() => setShowLess(!showLess)}
-            className="px-4 lg:px-10 text-neutral-500 text-right cursor-pointer hover:text-neutral-600 transition-all"
-          >
-            {showLess ? "Show More" : "Show Less"}
           </div>
         </div>
       ) : (

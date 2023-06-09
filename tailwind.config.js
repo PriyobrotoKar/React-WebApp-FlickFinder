@@ -1,3 +1,5 @@
+import { keyframes } from "@emotion/react";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: "class",
@@ -22,7 +24,20 @@ export default {
       lg: "0.938rem",
       base: "0.688rem",
     },
-    extend: {},
+    extend: {
+      animation: {
+        load: "load 2s infinite ",
+        loadSlow: "loadSlow 2.5s infinite ",
+      },
+      keyframes: {
+        load: {
+          "100%": { "background-position": "-100% 0%" },
+        },
+        loadSlow: {
+          "100%": { "background-position": "-100% 0%" },
+        },
+      },
+    },
   },
   plugins: [],
 };

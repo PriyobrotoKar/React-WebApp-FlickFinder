@@ -24,7 +24,7 @@ const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
     setPlayed(false);
     console.log(player1.current.getCurrentTime());
     if (played) {
-      player2.current.seekTo(0.003, "fraction");
+      player2.current.seekTo(0.005, "fraction");
     } else {
       player2.current.seekTo(player1.current.getCurrentTime());
     }

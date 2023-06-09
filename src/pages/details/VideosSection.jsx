@@ -43,46 +43,50 @@ const VideosSection = ({ videos, videosLoading }) => {
   return (
     <>
       {!videosLoading ? (
-        <div className="px-4 lg:px-10 mt-6 ">
-          <h3 className="text-neutral-500 text-xl font-medium ">
-            Official Videos
-          </h3>
-          <Carousel
-            responsive={responsive}
-            className="overflow-visible mt-2 z-10"
-          >
-            {videos?.results?.map((video) => {
-              return (
-                <div className=" mr-4 ">
-                  <div className="video">
-                    <button
-                      onClick={() => {
-                        setShow(true);
-                        setVideoId(video.key);
-                      }}
-                      className="bg-primary px-4 py-2 text-neutral-100 rounded-2xl z-10 absolute top-1/2 left-1/2 -translate-x-[60%] -translate-y-[65%] transition-all duration-200"
-                    >
-                      Watch
-                    </button>
-                    <Img
-                      src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
-                    />
+        videos.results.length ? (
+          <div className="px-4 lg:px-10 mt-6 ">
+            <h3 className="text-neutral-500 text-xl font-medium ">
+              Official Videos
+            </h3>
+            <Carousel
+              responsive={responsive}
+              className="overflow-visible mt-2 z-10"
+            >
+              {videos?.results?.map((video) => {
+                return (
+                  <div className=" mr-4 ">
+                    <div className="video">
+                      <button
+                        onClick={() => {
+                          setShow(true);
+                          setVideoId(video.key);
+                        }}
+                        className="bg-primary px-4 py-2 text-neutral-100 rounded-2xl z-10 absolute top-1/2 left-1/2 -translate-x-[60%] -translate-y-[65%] transition-all duration-200"
+                      >
+                        Watch
+                      </button>
+                      <Img
+                        src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
+                      />
+                    </div>
+                    <div className="text-neutral-700 dark:text-neutral-100 text-base truncate">
+                      {video.name}
+                    </div>
                   </div>
-                  <div className="text-neutral-700 dark:text-neutral-100 text-base truncate">
-                    {video.name}
-                  </div>
-                </div>
-              );
-            })}
-          </Carousel>
+                );
+              })}
+            </Carousel>
 
-          <VideoPopup
-            show={show}
-            setShow={setShow}
-            videoId={videoId}
-            setVideoId={setVideoId}
-          />
-        </div>
+            <VideoPopup
+              show={show}
+              setShow={setShow}
+              videoId={videoId}
+              setVideoId={setVideoId}
+            />
+          </div>
+        ) : (
+          ""
+        )
       ) : (
         <div></div>
       )}

@@ -38,12 +38,53 @@ const CaraosulSection = ({ data, loading }) => {
 
   return (
     <div className="overflow-visible">
-      {!loading && (
-        <Carousel responsive={responsive} className="overflow-visible z-10">
-          {data?.results?.map((item) => {
-            return <MovieCard item={item} isFromSearch={false} />;
-          })}
-        </Carousel>
+      {!loading ? (
+        <div>
+          <Carousel responsive={responsive} className="overflow-visible z-10">
+            {data?.results?.map((item) => {
+              return <MovieCard item={item} isFromSearch={false} />;
+            })}
+          </Carousel>
+        </div>
+      ) : (
+        <div className="flex gap-6">
+          <div className="h-60 min-w-[12rem] bg-gradient-to-r  bg-[100%_0%] animate-load from-[#292929] from-30% via-[#363636] via-40% to-[#292929] to-50% bg-[length:200%_100%] rounded-3xl p-4 flex items-end">
+            <div className="space-y-4 h-fit w-full">
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow   from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-6  rounded-xl "></div>
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow  from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-10  rounded-xl "></div>
+            </div>
+          </div>
+          <div className="h-60 min-w-[12rem] bg-gradient-to-r  bg-[100%_0%] animate-load from-[#292929] from-30% via-[#363636] via-40% to-[#292929] to-50% bg-[length:200%_100%] rounded-3xl p-4 flex items-end">
+            <div className="space-y-4 h-fit w-full">
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow   from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-6  rounded-xl "></div>
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow  from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-10  rounded-xl "></div>
+            </div>
+          </div>
+          <div className="h-60 min-w-[12rem] bg-gradient-to-r  bg-[100%_0%] animate-load from-[#292929] from-30% via-[#363636] via-40% to-[#292929] to-50% bg-[length:200%_100%] rounded-3xl p-4 flex items-end">
+            <div className="space-y-4 h-fit w-full">
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow   from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-6  rounded-xl "></div>
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow  from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-10  rounded-xl "></div>
+            </div>
+          </div>
+          <div className="h-60 min-w-[12rem] bg-gradient-to-r  bg-[100%_0%] animate-load from-[#292929] from-30% via-[#363636] via-40% to-[#292929] to-50% bg-[length:200%_100%] rounded-3xl p-4 flex items-end">
+            <div className="space-y-4 h-fit w-full">
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow   from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-6  rounded-xl "></div>
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow  from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-10  rounded-xl "></div>
+            </div>
+          </div>
+          <div className="h-60 min-w-[12rem] bg-gradient-to-r  bg-[100%_0%] animate-load from-[#292929] from-30% via-[#363636] via-40% to-[#292929] to-50% bg-[length:200%_100%] rounded-3xl p-4 flex items-end">
+            <div className="space-y-4 h-fit w-full">
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow   from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-6  rounded-xl "></div>
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow  from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-10  rounded-xl "></div>
+            </div>
+          </div>
+          <div className="h-60 min-w-[12rem] bg-gradient-to-r  bg-[100%_0%] animate-load from-[#292929] from-30% via-[#363636] via-40% to-[#292929] to-50% bg-[length:200%_100%] rounded-3xl p-4 flex items-end">
+            <div className="space-y-4 h-fit w-full">
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow   from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-6  rounded-xl "></div>
+              <div className="bg-gradient-to-r bg-[100%_0%] animate-loadSlow  from-[#383838] from-30% via-[#4e4e4e] via-40% to-[#383838] to-50% bg-[length:200%_100%] w-full h-10  rounded-xl "></div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
