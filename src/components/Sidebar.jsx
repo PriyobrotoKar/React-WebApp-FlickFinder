@@ -43,10 +43,10 @@ const Sidebar = (props) => {
         FlickFinder<span className="text-primary">.</span>
       </header>
       <nav className="mt-10 flex-1">
-        <h3 className="text-neutral-500 font-medium mb-8 landscape:mb-4">
+        <h3 className="text-neutral-500 font-medium mb-8 landscape:mb-4 landscape:lg:mb-8">
           Menu
         </h3>
-        <ul className=" space-y-6 landscape:space-y-2">
+        <ul className=" space-y-6 landscape:space-y-2 landscape:lg:space-y-6">
           {SidebarData.map((elem, ind) => {
             return (
               <li key={ind} className="">
