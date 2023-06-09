@@ -41,8 +41,8 @@ const CaraosulSection = ({ data, loading }) => {
       {!loading ? (
         <div>
           <Carousel responsive={responsive} className="overflow-visible z-10">
-            {data?.results?.map((item) => {
-              return <MovieCard item={item} isFromSearch={false} />;
+            {data?.results?.map((item, ind) => {
+              return <MovieCard key={ind} item={item} isFromSearch={false} />;
             })}
           </Carousel>
         </div>

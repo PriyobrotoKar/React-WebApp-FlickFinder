@@ -30,7 +30,7 @@ const MovieCard = ({ item, notFromHome }) => {
       <div className="imageContainer rounded-[1.2rem] h-full  hover:shadow-xl transition-all duration-200 overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:w-full before:h-full before:z-10 before:bg-gradient-to-t before:from-[#000] before:to-transparent">
         <Img
           src={
-            item?.poster_path
+            item.poster_path
               ? url.backdrop + item?.poster_path
               : "/No-Image-Placeholder.svg"
           }

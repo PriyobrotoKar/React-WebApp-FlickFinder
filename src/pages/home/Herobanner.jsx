@@ -86,7 +86,7 @@ const Herobanner = () => {
   const getMovieDetails = (ind) => {
     const id = popMovies[ind].id;
     fetchData(`/movie/${id}`).then((res) => {
-      setBackground(res.backdrop_path);
+      setBackground(res?.backdrop_path);
       setMovieDetails({
         id: res.id,
         title: res.title,
@@ -115,7 +115,7 @@ const Herobanner = () => {
             <div className="mt-2 text-base lg:text-lg flex gap-1 text-neutral-100 opacity-60 tracking-wide">
               {movieDetails.genres.map((elem, ind, genres) => {
                 return (
-                  <div>
+                  <div key={ind}>
                     {elem.name + (ind === genres.length - 1 ? "" : ",")}
                   </div>
                 );
@@ -137,7 +137,7 @@ const Herobanner = () => {
               return (
                 <div
                   className=" h-full poster mx-4 lg:mx-1 xl:mx-2  rounded-[20%] overflow-hidden"
-                  key={elem.id}
+                  key={ind}
                   onClick={(e) => {
                     setCurrIndex(ind);
                     document.querySelectorAll(".img").forEach((elem) => {
@@ -150,7 +150,7 @@ const Herobanner = () => {
                 >
                   <img
                     key={elem.id}
-                    src={url.backdrop + elem.poster_path}
+                    src={url?.backdrop + elem?.poster_path}
                     className={"h-full object-cover img cursor-pointer"}
                   />
                 </div>

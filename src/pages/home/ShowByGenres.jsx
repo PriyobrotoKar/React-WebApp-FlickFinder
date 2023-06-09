@@ -5,12 +5,10 @@ import { fetchData } from "../../utils/api";
 import ShowGenres from "./ShowGenres";
 
 const ShowByGenres = () => {
-  //   const { data, loading } = useFetch("/trending/all/week");
   const loading = false;
   let responses = [];
   let promises = [];
   const { url, genres } = useSelector((state) => state.home);
-  // console.log(genres);
 
   const showGenres = async () => {
     for (const g in genres) {
@@ -21,11 +19,10 @@ const ShowByGenres = () => {
     const keys = Object.keys(genres);
     let i = 0;
     while (i < 20) {
-      responses[i].genre = genres[keys[i]].name;
+      responses[i].genre = genres[keys[i]]?.name;
 
       i++;
     }
-    console.log(responses);
     return responses;
   };
 
